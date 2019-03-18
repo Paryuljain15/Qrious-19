@@ -43,20 +43,29 @@ $(document).ready(function () {
       document.getElementById("next").click();
        var x = document.getElementsByClassName("selected")[0].innerHTML;
        console.log(x);
+       var abc = new XMLHttpRequest();
+       abc.onreadystatechange = function(){
+           if(this.readystate == 4 && this.status == 200)
+           {
+           }
+           var y = JSON.stringify(x.value);
+           abc.open("GET","url",true);
+           abc.send(y);
+       }
 
    }
-   let sendObj = JSON.stringify({level_no:1});
+   //let sendObj = JSON.stringify({level_no:1});
 
-   function loadDoc() {
-       var xhttp = new XMLHttpRequest();
-       xhttp.onreadystatechange = function() {
-         if (this.readyState == 4 && this.status == 200) {
-           questions = this.responseText;
-         }
-       };
-       xhttp.open("GET", "url", true);
-       xhttp.send(sendObj);
-     }
+//    function loadDoc() {
+//        var xhttp = new XMLHttpRequest();
+//        xhttp.onreadystatechange = function() {
+//          if (this.readyState == 4 && this.status == 200) {
+//            questions = this.responseText;
+//          }
+//        };
+//        xhttp.open("GET", "url", true);
+//        xhttp.send(sendObj);
+//      }
    var questions = [
        {
            question : "1 Grand Central Terminal, Park Avenue, New York is the world's",
